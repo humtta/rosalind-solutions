@@ -7,7 +7,8 @@
 
   "shell": {
     "scripts": {
-      "fmt": "go fmt ./..."
+      "fmt": "go fmt ./...",
+      "vet": "go vet ./..."
     }
   }
 }
