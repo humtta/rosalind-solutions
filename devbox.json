@@ -8,7 +8,11 @@
   "shell": {
     "scripts": {
       "fmt": "go fmt ./...",
-      "vet": "go vet ./..."
+      "vet": "go vet ./...",
+      "check": [
+        "devbox run fmt",
+        "devbox run vet"
+      ]
     }
   }
 }
