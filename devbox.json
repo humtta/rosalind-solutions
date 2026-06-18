@@ -3,5 +3,11 @@
 
   "packages": {
     "go": "1.26.3"
+  },
+
+  "shell": {
+    "scripts": {
+      "fmt": "go fmt ./..."
+    }
   }
 }
