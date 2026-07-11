@@ -7,3 +7,8 @@ tasks:
   format:go:
     desc: Formats Go code
     cmd: gofmt -w .
+
+  # Python-related tasks
+  format:py:
+    desc: Formats Python code
+    cmd: ruff format .
