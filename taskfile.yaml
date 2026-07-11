@@ -12,3 +12,6 @@ tasks:
   format:py:
     desc: Formats Python code
     cmd: ruff format .
+  lint:py:
+    desc: Lints Python code
+    cmd: ruff check .
