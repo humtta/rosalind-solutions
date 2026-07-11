@@ -52,6 +52,63 @@
           "store_path": "/nix/store/33fw5m31lfcnk4ff2f0df7j2bxnh8lgk-go-1.26.3"
         }
       }
+    },
+    "python@3.15.0": {
+      "last_modified": "2026-06-27T07:37:20Z",
+      "plugin_version": "0.0.5",
+      "resolved": "github:NixOS/nixpkgs/3d46470bb3030020f7e1361f33514854f5bfa86d#python315",
+      "source": "devbox-search",
+      "version": "3.15.0b3",
+      "systems": {
+        "aarch64-darwin": {
+          "outputs": [
+            {
+              "name": "out",
+              "path": "/nix/store/2s7acb0nbd4x8lssr43hn53c01svwcsa-python3-3.15.0b3",
+              "default": true
+            }
+          ],
+          "store_path": "/nix/store/2s7acb0nbd4x8lssr43hn53c01svwcsa-python3-3.15.0b3"
+        },
+        "aarch64-linux": {
+          "outputs": [
+            {
+              "name": "out",
+              "path": "/nix/store/yf8lmb734ab1lijs9wbzmw4gdw6swclq-python3-3.15.0b3",
+              "default": true
+            },
+            {
+              "name": "debug",
+              "path": "/nix/store/9iplbkmibb9zpv902yncq8s59h8znvar-python3-3.15.0b3-debug"
+            }
+          ],
+          "store_path": "/nix/store/yf8lmb734ab1lijs9wbzmw4gdw6swclq-python3-3.15.0b3"
+        },
+        "x86_64-darwin": {
+          "outputs": [
+            {
+              "name": "out",
+              "path": "/nix/store/m2p1arbg3vrkjw7qh912kk9sfkcyqvab-python3-3.15.0b3",
+              "default": true
+            }
+          ],
+          "store_path": "/nix/store/m2p1arbg3vrkjw7qh912kk9sfkcyqvab-python3-3.15.0b3"
+        },
+        "x86_64-linux": {
+          "outputs": [
+            {
+              "name": "out",
+              "path": "/nix/store/nycpfzi42fk7r2n8k2cy7ymja4wydwh6-python3-3.15.0b3",
+              "default": true
+            },
+            {
+              "name": "debug",
+              "path": "/nix/store/1my7iy2i8jlicrj42wvdg62vzs5q2xlp-python3-3.15.0b3-debug"
+            }
+          ],
+          "store_path": "/nix/store/nycpfzi42fk7r2n8k2cy7ymja4wydwh6-python3-3.15.0b3"
+        }
+      }
     }
   }
 }
