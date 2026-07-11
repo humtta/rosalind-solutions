@@ -14,6 +14,10 @@ tasks:
     desc: Run all lint tasks
     cmds:
       - task lint:py
+  check:
+    desc: Run all check tasks
+    cmds:
+      - task check:py
 
   # Go-related tasks
   format:go:
