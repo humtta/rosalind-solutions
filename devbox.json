@@ -4,16 +4,5 @@
   "packages": {
     "go": "1.26.3",
     "python": "3.15.0"
-  },
-
-  "shell": {
-    "scripts": {
-      "fmt": "go fmt ./...",
-      "vet": "go vet ./...",
-      "check": [
-        "devbox run fmt",
-        "devbox run vet"
-      ]
-    }
   }
 }
