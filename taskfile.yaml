@@ -1,3 +1,9 @@
 # yaml-language-server: $schema=https://taskfile.dev/schema.json
 
 version: "3"
+
+tasks:
+  # Go-related tasks
+  format:go:
+    desc: Formats Go code
+    cmd: gofmt -w .
