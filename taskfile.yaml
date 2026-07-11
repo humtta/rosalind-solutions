@@ -5,6 +5,12 @@ version: "3"
 silent: true
 
 tasks:
+  format:
+    desc: Run all format tasks
+    cmds:
+      - task format:go
+      - task format:py
+
   # Go-related tasks
   format:go:
     desc: Formats Go code
