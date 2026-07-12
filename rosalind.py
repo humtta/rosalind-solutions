@@ -84,3 +84,18 @@ def run_solution(problem: str, language: Language, input: Input) -> int:
             exit(f"{command} command not found")
 
     return process.returncode
+
+
+def create_solution(problem: str, language: Language) -> None:
+    config = LANGUAGES[language]
+
+    solution_file = solution_path(problem, language)
+    if solution_file.exists():
+        exit(f"{solution_file} already exists")
+
+    solution_file.parent.mkdir(parents=True, exist_ok=True)
+    for filename in INPUT_FILES.values():
+        (solution_file.parent / filename).touch()
+
+    solution_file.write_text(config.template)
+    print(f"{solution_file} created")
