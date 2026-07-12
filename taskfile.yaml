@@ -10,10 +10,12 @@ tasks:
     cmds:
       - task format:go
       - task format:py
+
   lint:
     desc: Run all lint tasks
     cmds:
       - task lint:py
+
   check:
     desc: Run all check tasks
     cmds:
@@ -28,9 +30,11 @@ tasks:
   format:py:
     desc: Formats Python code
     cmd: ruff format .
+
   lint:py:
     desc: Lints Python code
     cmd: ruff check .
+
   check:py:
     desc: Formats and lints Python code
     cmds:
