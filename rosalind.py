@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 
 from enum import StrEnum
+from textwrap import dedent
 from typing import NamedTuple
 
 
@@ -24,4 +25,32 @@ DEFAULT_INPUT = Input.SAMPLE
 INPUT_FILES: dict[Input, str] = {
     Input.SAMPLE: "SAMPLE.txt",
     Input.DATASET: "DATASET.txt",
+}
+
+LANGUAGES: dict[Language, LanguageConfig] = {
+    Language.GO: LanguageConfig(
+        command=["go", "run"],
+        template=dedent("""\
+            package main
+
+            import (
+                "bufio"
+                "fmt"
+                "os"
+            )
+
+            func solve(s string) string {
+                return s
+            }
+
+            func main() {
+                s := bufio.NewScanner(os.Stdin)
+                if !s.Scan() {
+                    fmt.Fprintln(os.Stderr, "Error reading input:", s.Err())
+                    os.Exit(1)
+                }
+                fmt.Println(solve(s.Text()))
+            }
+        """),
+    )
 }
