@@ -17,5 +17,6 @@ class LanguageConfig(NamedTuple):
     command: list[str]
     template: str
 
+
 DEFAULT_LANGUAGE = Language.GO
 DEFAULT_INPUT = Input.SAMPLE
