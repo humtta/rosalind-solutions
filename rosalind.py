@@ -57,3 +57,7 @@ LANGUAGES: dict[Language, LanguageConfig] = {
 }
 
 PROBLEMS_DIR = Path(__file__).resolve().parent / "problems"
+
+
+def solution_path(problem: str, language: Language) -> Path:
+    return PROBLEMS_DIR / problem / f"solution.{language}"
