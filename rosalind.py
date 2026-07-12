@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 
 from enum import StrEnum
+from pathlib import Path
 from textwrap import dedent
 from typing import NamedTuple
 
@@ -54,3 +55,5 @@ LANGUAGES: dict[Language, LanguageConfig] = {
         """),
     )
 }
+
+PROBLEMS_DIR = Path(__file__).resolve().parent / "problems"
