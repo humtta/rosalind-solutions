@@ -2,6 +2,8 @@
 
 from enum import StrEnum
 from pathlib import Path
+from subprocess import run
+from sys import exit
 from textwrap import dedent
 from typing import NamedTuple
 
@@ -61,3 +63,24 @@ PROBLEMS_DIR = Path(__file__).resolve().parent / "problems"
 
 def solution_path(problem: str, language: Language) -> Path:
     return PROBLEMS_DIR / problem / f"solution.{language}"
+
+
+def run_solution(problem: str, language: Language, input: Input) -> int:
+    config = LANGUAGES[language]
+
+    solution_file = solution_path(problem, language)
+    if not solution_file.is_file():
+        exit(f"missing {solution_file}")
+
+    input_file = PROBLEMS_DIR / problem / INPUT_FILES[input]
+    if not input_file.is_file():
+        exit(f"missing {input_file}")
+
+    with input_file.open() as stdin:
+        try:
+            process = run([*config.command, str(solution_file)], stdin=stdin)
+        except FileNotFoundError:
+            command = config.command[0]
+            exit(f"{command} command not found")
+
+    return process.returncode
