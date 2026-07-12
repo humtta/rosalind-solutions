@@ -4,7 +4,7 @@ from enum import StrEnum
 
 
 class Language(StrEnum):
-    GO = "Go"
+    GO = "go"
 
 
 class Input(StrEnum):
