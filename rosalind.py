@@ -20,3 +20,8 @@ class LanguageConfig(NamedTuple):
 
 DEFAULT_LANGUAGE = Language.GO
 DEFAULT_INPUT = Input.SAMPLE
+
+INPUT_FILES: dict[Input, str] = {
+    Input.SAMPLE: "SAMPLE.txt",
+    Input.DATASET: "DATASET.txt",
+}
