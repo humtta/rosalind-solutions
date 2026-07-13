@@ -109,6 +109,7 @@ def create_solution(problem: str, language: Language) -> None:
 
 def build_parser() -> ArgumentParser:
     parser = ArgumentParser(description="Run and scaffold Rosalind problem solutions")
+    subparsers = parser.add_subparsers(dest="command", required=True)
 
     def add_problem_argument(subparser: ArgumentParser) -> None:
         subparser.add_argument("problem", help="problem id")
