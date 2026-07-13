@@ -113,6 +113,16 @@ def build_parser() -> ArgumentParser:
     def add_problem_argument(subparser: ArgumentParser) -> None:
         subparser.add_argument("problem", help="problem id")
 
+    def add_language_option(subparser: ArgumentParser) -> None:
+        subparser.add_argument(
+            "-l",
+            "--language",
+            type=Language,
+            choices=Language,
+            default=DEFAULT_LANGUAGE,
+            help="solution language (default: %(default)s)",
+        )
+
     return parser
 
 
