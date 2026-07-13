@@ -1,5 +1,6 @@
 #!/usr/bin/env python
 
+from argparse import ArgumentParser
 from enum import StrEnum
 from pathlib import Path
 from subprocess import run
@@ -99,3 +100,9 @@ def create_solution(problem: str, language: Language) -> None:
 
     solution_file.write_text(config.template)
     print(f"{solution_file} created")
+
+
+def build_parser() -> ArgumentParser:
+    parser = ArgumentParser(description="Run and scaffold Rosalind problem solutions")
+
+    return parser
