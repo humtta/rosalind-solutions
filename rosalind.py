@@ -26,13 +26,13 @@ RUN_COMMANDS: dict[Language, list[str]] = {
     Language.GO: ["go", "run"],
 }
 
-DEFAULT_LANGUAGE = Language.GO
-DEFAULT_INPUT = Input.SAMPLE
-
 INPUT_FILES: dict[Input, str] = {
     Input.SAMPLE: "SAMPLE.txt",
     Input.DATASET: "DATASET.txt",
 }
+
+DEFAULT_LANGUAGE = Language.GO
+DEFAULT_INPUT = Input.SAMPLE
 
 ROOT_DIR = Path(__file__).resolve().parent
 PROBLEMS_DIR = ROOT_DIR / "problems"
