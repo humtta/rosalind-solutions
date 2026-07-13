@@ -123,6 +123,16 @@ def build_parser() -> ArgumentParser:
             help="solution language (default: %(default)s)",
         )
 
+    def add_input_option(subparser: ArgumentParser) -> None:
+        subparser.add_argument(
+            "-i",
+            "--input",
+            type=Input,
+            choices=Input,
+            default=DEFAULT_INPUT,
+            help="input source (default: %(default)s)",
+        )
+
     return parser
 
 
