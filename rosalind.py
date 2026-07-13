@@ -28,6 +28,10 @@ class LanguageConfig(NamedTuple):
     template: str
 
 
+RUN_COMMANDS: dict[Language, list[str]] = {
+    Language.GO: ["go", "run"],
+}
+
 DEFAULT_LANGUAGE = Language.GO
 DEFAULT_INPUT = Input.SAMPLE
 
