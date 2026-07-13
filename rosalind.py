@@ -6,8 +6,6 @@ from pathlib import Path
 from shutil import copy
 from subprocess import run
 from sys import exit
-from textwrap import dedent
-from typing import NamedTuple
 
 
 class Command(StrEnum):
@@ -24,11 +22,6 @@ class Input(StrEnum):
     DATASET = "dataset"
 
 
-class LanguageConfig(NamedTuple):
-    command: list[str]
-    template: str
-
-
 RUN_COMMANDS: dict[Language, list[str]] = {
     Language.GO: ["go", "run"],
 }
@@ -39,34 +32,6 @@ DEFAULT_INPUT = Input.SAMPLE
 INPUT_FILES: dict[Input, str] = {
     Input.SAMPLE: "SAMPLE.txt",
     Input.DATASET: "DATASET.txt",
-}
-
-LANGUAGES: dict[Language, LanguageConfig] = {
-    Language.GO: LanguageConfig(
-        command=["go", "run"],
-        template=dedent("""\
-            package main
-
-            import (
-                "bufio"
-                "fmt"
-                "os"
-            )
-
-            func solve(s string) string {
-                return s
-            }
-
-            func main() {
-                s := bufio.NewScanner(os.Stdin)
-                if !s.Scan() {
-                    fmt.Fprintln(os.Stderr, "Error reading input:", s.Err())
-                    os.Exit(1)
-                }
-                fmt.Println(solve(s.Text()))
-            }
-        """),
-    )
 }
 
 ROOT_DIR = Path(__file__).resolve().parent
