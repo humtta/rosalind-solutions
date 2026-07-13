@@ -78,7 +78,7 @@ def solution_path(problem: str, language: Language) -> Path:
 
 
 def run_solution(problem: str, language: Language, input: Input) -> int:
-    config = LANGUAGES[language]
+    run_command = RUN_COMMANDS[language]
 
     solution_file = solution_path(problem, language)
     if not solution_file.is_file():
@@ -90,10 +90,9 @@ def run_solution(problem: str, language: Language, input: Input) -> int:
 
     with input_file.open() as stdin:
         try:
-            process = run([*config.command, str(solution_file)], stdin=stdin)
+            process = run([*run_command, str(solution_file)], stdin=stdin)
         except FileNotFoundError:
-            command = config.command[0]
-            exit(f"{command} command not found")
+            exit(f"{run_command[0]} command not found")
 
     return process.returncode
 
