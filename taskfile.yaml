@@ -20,6 +20,7 @@ tasks:
   check:
     desc: Run all check tasks
     cmds:
+      - task check:go
       - task check:py
 
   # Go-related tasks
@@ -30,6 +31,12 @@ tasks:
   lint:go:
     desc: Lints Go code
     cmd: GO111MODULE=off go vet ./...
+
+  check:go:
+    desc: Formats and lints Go code
+    cmds:
+      - task format:go
+      - task lint:go
 
   # Python-related tasks
   format:py:
