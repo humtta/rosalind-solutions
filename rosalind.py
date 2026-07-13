@@ -139,6 +139,12 @@ def build_parser() -> ArgumentParser:
     add_language_option(run_parser)
     add_input_option(run_parser)
 
+    create_parser = subparsers.add_parser(
+        Command.CREATE, help="scaffold a new problem solution"
+    )
+    add_problem_argument(create_parser)
+    add_language_option(create_parser)
+
     return parser
 
 
