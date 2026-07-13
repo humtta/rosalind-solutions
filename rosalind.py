@@ -134,6 +134,11 @@ def build_parser() -> ArgumentParser:
             help="input source (default: %(default)s)",
         )
 
+    run_parser = subparsers.add_parser(Command.RUN, help="run a problem solution")
+    add_problem_argument(run_parser)
+    add_language_option(run_parser)
+    add_input_option(run_parser)
+
     return parser
 
 
