@@ -121,3 +121,7 @@ def main() -> None:
             exit(run_solution(args.problem, args.language, args.input))
         case Command.CREATE:
             create_solution(args.problem, args.language)
+
+
+if __name__ == "__main__":
+    main()
