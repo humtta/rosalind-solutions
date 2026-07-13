@@ -9,6 +9,11 @@ from textwrap import dedent
 from typing import NamedTuple
 
 
+class Command(StrEnum):
+    RUN = "run"
+    CREATE = "create"
+
+
 class Language(StrEnum):
     GO = "go"
 
