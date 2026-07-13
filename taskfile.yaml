@@ -29,7 +29,7 @@ tasks:
   # Python-related tasks
   format:py:
     desc: Formats Python code
-    cmd: ruff format .
+    cmd: ruff format . --line-length 80
 
   lint:py:
     desc: Lints Python code
