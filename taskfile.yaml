@@ -24,7 +24,7 @@ tasks:
   # Go-related tasks
   format:go:
     desc: Formats Go code
-    cmd: gofmt -w .
+    cmd: GO111MODULE=off go fmt ./...
 
   # Python-related tasks
   format:py:
