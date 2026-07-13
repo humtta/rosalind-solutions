@@ -3,6 +3,7 @@
 from argparse import ArgumentParser
 from enum import StrEnum
 from pathlib import Path
+from shutil import copy
 from subprocess import run
 from sys import exit
 from textwrap import dedent
@@ -102,17 +103,19 @@ def run_solution(problem: str, language: Language, input: Input) -> int:
 
 
 def create_solution(problem: str, language: Language) -> None:
-    config = LANGUAGES[language]
-
     solution_file = solution_path(problem, language)
     if solution_file.exists():
         exit(f"{solution_file} already exists")
+
+    template_file = template_path(language)
+    if not template_file.is_file():
+        exit(f"missing {template_file}")
 
     solution_file.parent.mkdir(parents=True, exist_ok=True)
     for filename in INPUT_FILES.values():
         (solution_file.parent / filename).touch()
 
-    solution_file.write_text(config.template)
+    copy(template_file, solution_file)
     print(f"{solution_file} created")
 
 
