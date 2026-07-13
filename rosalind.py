@@ -73,6 +73,10 @@ PROBLEMS_DIR = ROOT_DIR / "problems"
 TEMPLATES_DIR = ROOT_DIR / "templates"
 
 
+def template_path(language: Language) -> Path:
+    return TEMPLATES_DIR / f"solution.{language}"
+
+
 def solution_path(problem: str, language: Language) -> Path:
     return PROBLEMS_DIR / problem / f"solution.{language}"
 
