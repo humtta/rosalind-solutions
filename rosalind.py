@@ -111,3 +111,13 @@ def build_parser() -> ArgumentParser:
     parser = ArgumentParser(description="Run and scaffold Rosalind problem solutions")
 
     return parser
+
+
+def main() -> None:
+    args = build_parser().parse_args()
+
+    match args:
+        case Command.RUN:
+            exit(run_solution(args.problem, args.language, args.input))
+        case Command.CREATE:
+            create_solution(args.problem, args.language)
