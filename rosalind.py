@@ -39,16 +39,20 @@ PROBLEMS_DIR = ROOT_DIR / "problems"
 TEMPLATES_DIR = ROOT_DIR / "templates"
 
 
+def problem_path(problem: str) -> Path:
+    return PROBLEMS_DIR / problem
+
+
 def template_path(language: Language) -> Path:
     return TEMPLATES_DIR / f"solution.{language}"
 
 
 def solution_path(problem: str, language: Language) -> Path:
-    return PROBLEMS_DIR / problem / f"solution.{language}"
+    return problem_path(problem) / f"solution.{language}"
 
 
 def input_path(problem: str, input: Input) -> Path:
-    return PROBLEMS_DIR / problem / INPUT_FILES[input]
+    return problem_path(problem) / INPUT_FILES[input]
 
 
 def run_solution(problem: str, language: Language, input: Input) -> int:
@@ -80,9 +84,10 @@ def create_solution(problem: str, language: Language) -> None:
     if not template_file.is_file():
         exit(f"missing {template_file}")
 
-    solution_file.parent.mkdir(parents=True, exist_ok=True)
+    problem_dir = problem_path(problem)
+    problem_dir.mkdir(parents=True, exist_ok=True)
     for filename in INPUT_FILES.values():
-        (solution_file.parent / filename).touch()
+        (problem_dir / filename).touch()
 
     copy(template_file, solution_file)
     print(f"{solution_file} created")
