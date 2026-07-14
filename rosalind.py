@@ -55,16 +55,19 @@ def input_path(problem: str, input: Input) -> Path:
     return problem_path(problem) / INPUT_FILES[input]
 
 
+def check_file(path: Path, exist_ok: bool = True) -> Path:
+    if exist_ok and not path.is_file():
+        exit(f"file not found: {path}")
+    if not exist_ok and path.is_file():
+        exit(f"file already exists: {path}")
+    return path
+
+
 def run_solution(problem: str, language: Language, input: Input) -> int:
     run_command = RUN_COMMANDS[language]
 
-    solution_file = solution_path(problem, language)
-    if not solution_file.is_file():
-        exit(f"missing {solution_file}")
-
-    input_file = input_path(problem, input)
-    if not input_file.is_file():
-        exit(f"missing {input_file}")
+    solution_file = check_file(solution_path(problem, language))
+    input_file = check_file(input_path(problem, input))
 
     with input_file.open() as stdin:
         try:
@@ -76,13 +79,8 @@ def run_solution(problem: str, language: Language, input: Input) -> int:
 
 
 def create_solution(problem: str, language: Language) -> None:
-    solution_file = solution_path(problem, language)
-    if solution_file.exists():
-        exit(f"{solution_file} already exists")
-
-    template_file = template_path(language)
-    if not template_file.is_file():
-        exit(f"missing {template_file}")
+    solution_file = check_file(solution_path(problem, language), False)
+    template_file = check_file(template_path(language))
 
     problem_dir = problem_path(problem)
     problem_dir.mkdir(parents=True, exist_ok=True)
