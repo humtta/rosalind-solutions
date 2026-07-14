@@ -8,6 +8,9 @@ from subprocess import run
 from sys import exit
 
 
+class RosalindError(Exception): ...
+
+
 class Command(StrEnum):
     RUN = "run"
     CREATE = "create"
