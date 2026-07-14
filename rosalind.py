@@ -47,6 +47,10 @@ def solution_path(problem: str, language: Language) -> Path:
     return PROBLEMS_DIR / problem / f"solution.{language}"
 
 
+def input_path(problem: str, input: Input) -> Path:
+    return PROBLEMS_DIR / problem / INPUT_FILES[input]
+
+
 def run_solution(problem: str, language: Language, input: Input) -> int:
     run_command = RUN_COMMANDS[language]
 
@@ -54,7 +58,7 @@ def run_solution(problem: str, language: Language, input: Input) -> int:
     if not solution_file.is_file():
         exit(f"missing {solution_file}")
 
-    input_file = PROBLEMS_DIR / problem / INPUT_FILES[input]
+    input_file = input_path(problem, input)
     if not input_file.is_file():
         exit(f"missing {input_file}")
 
