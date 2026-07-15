@@ -151,6 +151,8 @@ def main() -> None:
                 create_solution(args.problem, args.language)
     except RosalindError as error:
         parser.error(str(error))
+    except Exception as error:
+        parser.error("unexpected exception:", str(error))
 
 
 if __name__ == "__main__":
