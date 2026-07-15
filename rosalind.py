@@ -140,13 +140,17 @@ def build_parser() -> ArgumentParser:
 
 
 def main() -> None:
-    args = build_parser().parse_args()
+    parser = build_parser()
+    args = parser.parse_args()
 
-    match args.command:
-        case Command.RUN:
-            exit(run_solution(args.problem, args.language, args.input))
-        case Command.CREATE:
-            create_solution(args.problem, args.language)
+    try:
+        match args.command:
+            case Command.RUN:
+                exit(run_solution(args.problem, args.language, args.input))
+            case Command.CREATE:
+                create_solution(args.problem, args.language)
+    except RosalindError as error:
+        parser.error(str(error))
 
 
 if __name__ == "__main__":
