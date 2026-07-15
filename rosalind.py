@@ -70,14 +70,6 @@ def require_missing_file(path: Path) -> Path:
     return path
 
 
-def check_file(path: Path, exist_ok: bool = True) -> Path:
-    if exist_ok and not path.is_file():
-        exit(f"file not found: {path}")
-    if not exist_ok and path.is_file():
-        exit(f"file already exists: {path}")
-    return path
-
-
 def run_solution(problem: str, language: Language, input: Input) -> int:
     run_command = RUN_COMMANDS[language]
 
