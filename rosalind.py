@@ -64,6 +64,12 @@ def require_existing_file(path: Path) -> Path:
     return path
 
 
+def require_missing_file(path: Path) -> Path:
+    if path.is_file():
+        raise RosalindError(f"file already exists: {path}")
+    return path
+
+
 def check_file(path: Path, exist_ok: bool = True) -> Path:
     if exist_ok and not path.is_file():
         exit(f"file not found: {path}")
@@ -88,7 +94,7 @@ def run_solution(problem: str, language: Language, input: Input) -> int:
 
 
 def create_solution(problem: str, language: Language) -> None:
-    solution_file = check_file(solution_path(problem, language), False)
+    solution_file = require_missing_file(solution_path(problem, language))
     template_file = require_existing_file(template_path(language))
 
     problem_dir = problem_path(problem)
