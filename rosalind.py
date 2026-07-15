@@ -58,6 +58,12 @@ def input_path(problem: str, input: Input) -> Path:
     return problem_path(problem) / INPUT_FILES[input]
 
 
+def require_existing_file(path: Path) -> Path:
+    if not path.is_file():
+        raise RosalindError(f"file not found: {path}")
+    return path
+
+
 def check_file(path: Path, exist_ok: bool = True) -> Path:
     if exist_ok and not path.is_file():
         exit(f"file not found: {path}")
@@ -69,8 +75,8 @@ def check_file(path: Path, exist_ok: bool = True) -> Path:
 def run_solution(problem: str, language: Language, input: Input) -> int:
     run_command = RUN_COMMANDS[language]
 
-    solution_file = check_file(solution_path(problem, language))
-    input_file = check_file(input_path(problem, input))
+    solution_file = require_existing_file(solution_path(problem, language))
+    input_file = require_existing_file(input_path(problem, input))
 
     with input_file.open() as stdin:
         try:
@@ -83,7 +89,7 @@ def run_solution(problem: str, language: Language, input: Input) -> int:
 
 def create_solution(problem: str, language: Language) -> None:
     solution_file = check_file(solution_path(problem, language), False)
-    template_file = check_file(template_path(language))
+    template_file = require_existing_file(template_path(language))
 
     problem_dir = problem_path(problem)
     problem_dir.mkdir(parents=True, exist_ok=True)
