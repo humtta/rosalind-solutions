@@ -80,7 +80,7 @@ def run_solution(problem: str, language: Language, input: Input) -> int:
         try:
             process = run([*run_command, str(solution_file)], stdin=stdin)
         except FileNotFoundError:
-            exit(f"{run_command[0]} command not found")
+            raise RosalindError(f"command not found: {run_command[0]}")
 
     return process.returncode
 
