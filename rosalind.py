@@ -157,8 +157,6 @@ def main() -> int:
                 return 0
     except RosalindError as error:
         parser.error(str(error))
-    except Exception as error:
-        parser.error(f"unexpected exception: {str(error)}")
 
 
 if __name__ == "__main__":
