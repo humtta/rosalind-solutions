@@ -43,6 +43,8 @@ TEMPLATES_DIR = ROOT_DIR / "templates"
 
 
 def problem_path(problem: str) -> Path:
+    if not problem or not problem.isalpha():
+        raise RosalindError(f"invalid problem id: {problem}")
     return PROBLEMS_DIR / problem
 
 
