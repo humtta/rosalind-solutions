@@ -5,7 +5,6 @@ from enum import StrEnum
 from pathlib import Path
 from shutil import copy
 from subprocess import run
-from sys import exit
 
 
 class RosalindError(Exception): ...
@@ -145,16 +144,17 @@ def build_parser() -> ArgumentParser:
     return parser
 
 
-def main() -> None:
+def main() -> int:
     parser = build_parser()
     args = parser.parse_args()
 
     try:
         match args.command:
             case Command.RUN:
-                exit(run_solution(args.problem, args.language, args.input))
+                return run_solution(args.problem, args.language, args.input)
             case Command.CREATE:
                 create_solution(args.problem, args.language)
+                return 0
     except RosalindError as error:
         parser.error(str(error))
     except Exception as error:
@@ -162,4 +162,4 @@ def main() -> None:
 
 
 if __name__ == "__main__":
-    main()
+    raise SystemExit(main())
