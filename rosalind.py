@@ -91,6 +91,7 @@ def create_solution(problem: str, language: Language) -> None:
 
     problem_dir = problem_path(problem)
     problem_dir.mkdir(parents=True, exist_ok=True)
+
     for filename in INPUT_FILES.values():
         (problem_dir / filename).touch()
 
