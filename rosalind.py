@@ -95,7 +95,6 @@ def create_solution(problem: str, language: Language) -> None:
         (problem_dir / filename).touch()
 
     copy(template_file, solution_file)
-    print(f"{solution_file} created")
 
 
 def build_parser() -> ArgumentParser:
