@@ -7,7 +7,15 @@ import (
 )
 
 func solve(s string) string {
-	return s
+	nucleotides := []rune(s)
+
+	for i := range nucleotides {
+		if nucleotides[i] == 'T' {
+			nucleotides[i] = 'U'
+		}
+	}
+
+	return string(nucleotides)
 }
 
 func main() {
