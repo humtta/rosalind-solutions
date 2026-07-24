@@ -4,6 +4,10 @@ version: "3"
 
 silent: true
 
+env:
+  # Disable Go modules so we can format and lint loose Go files.
+  GO111MODULE: off
+
 tasks:
   format:
     desc: Run all format tasks
@@ -26,11 +30,11 @@ tasks:
   # Go-related tasks
   format:go:
     desc: Formats Go code
-    cmd: GO111MODULE=off go fmt ./...
+    cmd: go fmt ./...
 
   lint:go:
     desc: Lints Go code
-    cmd: GO111MODULE=off go vet ./...
+    cmd: go vet ./...
 
   check:go:
     desc: Formats and lints Go code
