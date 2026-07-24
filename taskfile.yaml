@@ -11,21 +11,15 @@ env:
 tasks:
   format:
     desc: Run all format tasks
-    cmds:
-      - task format:go
-      - task format:py
+    cmd: task format:go format:py
 
   lint:
     desc: Run all lint tasks
-    cmds:
-      - task lint:go
-      - task lint:py
+    cmd: task lint:go lint:py
 
   check:
     desc: Run all check tasks
-    cmds:
-      - task check:go
-      - task check:py
+    cmd: task check:go check:py
 
   # Go-related tasks
   format:go:
@@ -38,9 +32,7 @@ tasks:
 
   check:go:
     desc: Formats and lints Go code
-    cmds:
-      - task format:go
-      - task lint:go
+    cmd: task format:go lint:go
 
   # Python-related tasks
   format:py:
@@ -53,6 +45,4 @@ tasks:
 
   check:py:
     desc: Formats and lints Python code
-    cmds:
-      - task format:py
-      - task lint:py
+    cmd: task format:py lint:py
