@@ -10,15 +10,15 @@ env:
 
 tasks:
   format:
-    desc: Run all format tasks
+    desc: Runs all format tasks
     cmd: task format:go format:py
 
   lint:
-    desc: Run all lint tasks
+    desc: Runs all lint tasks
     cmd: task lint:go lint:py
 
   check:
-    desc: Run all check tasks
+    desc: Runs all check tasks
     cmd: task check:go check:py
 
   # Go-related tasks
