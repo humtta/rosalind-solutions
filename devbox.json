@@ -1,6 +1,26 @@
 {
   "$schema": "https://raw.githubusercontent.com/jetify-com/devbox/0.17.2/.schema/devbox.schema.json",
 
+  "env": {
+    "GO111MODULE": "off"
+  },
+
+  "shell": {
+    "scripts": {
+      "format": "devbox run format:go; devbox run format:py",
+      "lint": "devbox run lint:go; devbox run lint:py",
+      "check": "devbox run check:go; devbox run check:py",
+
+      "format:go": "go fmt ./...",
+      "lint:go": "go vet ./...",
+      "check:go": "devbox run format:go && devbox run lint:go",
+
+      "format:py": "ruff format . --line-length 80",
+      "lint:py": "ruff check .",
+      "check:py": "devbox run format:py && devbox run lint:py"
+    }
+  },
+
   "packages": {
     "go": "1.26.3",
     "python": "3.15.0",
